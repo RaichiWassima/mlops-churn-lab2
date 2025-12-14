@@ -20,7 +20,7 @@ un modèle versionné est promu côté registry, puis utilisé par un service
 d’inférence léger.
 """
 
-
+import uuid
 import json
 import time
 from pathlib import Path
@@ -291,9 +291,9 @@ def predict(req: PredictRequest) -> dict[str, Any]:
         ) from exc
     latency_ms = (time.perf_counter() - start) * 1000.0
 
-
+    request_id = req.request_id or f"auto-{uuid.uuid4().hex[:8]}"
     out: dict[str, Any] = {
-        "request_id": req.request_id,
+        "request_id": request_id,
         "model_version": model_name,
         "prediction": pred,
         "probability": round(proba, 6),
