@@ -1,18 +1,6 @@
-# Environnements
-venv/
-.env
-
-# Python
+venv_mlops/
 __pycache__/
 *.pyc
-
-# Données
-data/*.csv
 logs/
-registry/*.json
-registry/current_model.txt
-models/*.joblib
-
-# OS
-.DS_Store
-Thumbs.db
+models/
+data/
